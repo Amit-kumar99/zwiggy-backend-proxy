@@ -3,6 +3,11 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
+// Health check route
+app.get('/health', (req, res) => {
+    res.send('Proxy health is fine');
+});
+
 // Proxy configuration
 const proxyOptions = {
     target: 'https://www.swiggy.com', // Target server
